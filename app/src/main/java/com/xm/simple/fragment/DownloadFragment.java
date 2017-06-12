@@ -27,7 +27,7 @@ import com.xm.xdownload.net.NetDialogConfig;
 import com.xm.xdownload.net.buffer.DownInfo;
 import com.xm.xdownload.net.buffer.DownState;
 import com.xm.xdownload.net.common.ApplySchedulers;
-import com.xm.xdownload.net.common.ProgressSubscriber;
+import com.xm.xdownload.net.common.NetProgressSubscriber;
 import com.xm.xdownload.net.common.RetrofitClient;
 import com.xm.xdownload.net.download.DownResultListenner;
 import com.xm.xdownload.net.download.RetrofitDownloadManager;
@@ -65,7 +65,7 @@ public class DownloadFragment extends BaseFragment<FragmentDownloadBinding> impl
         RetrofitClient.getService(HttpService.class)
                 .getDownloadList(1, 1)
                 .compose(new ApplySchedulers<DownListBean>())
-                .subscribe(new ProgressSubscriber<>(this, IConstantPool.DOWNLOAD_URL, NetDialogConfig.NORMAL_LOADING, NetBufferConfig.NORMAL_BUFFER,56000, new SimpleNetResponseListener<DownListBean>() {
+                .subscribe(new NetProgressSubscriber<>(this, IConstantPool.DOWNLOAD_URL, NetDialogConfig.NORMAL_LOADING, NetBufferConfig.NORMAL_BUFFER,56000, new SimpleNetResponseListener<DownListBean>() {
                     @Override
                     public void onSucceed(DownListBean data, String mothead) {
                         //本地数据库缓存

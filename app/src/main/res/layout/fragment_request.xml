@@ -1,0 +1,68 @@
+<layout>
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.xm.simple.fragment.RequestFragment.Presenter"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/status_bar_height"
+        tools:context=".fragment.RequestFragment">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.request}"
+            android:textAllCaps="false"
+            android:text="普通请求String，不缓存"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.request_gson}"
+            android:textAllCaps="false"
+            android:text="普通请求Gson，不缓存"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.request_gson_dialog}"
+            android:textAllCaps="false"
+            android:text="普通请求Gson，点击加载Dialog外，不可取消"/>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.request_gson_un_dialog}"
+            android:textAllCaps="false"
+            android:text="普通请求Gson，不显示加载Dialog"/>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.request_gson_buffer}"
+            android:textAllCaps="false"
+            android:text="普通请求Gson，显示Dialog,默认缓存"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.request_gson_buffer_custom}"
+            android:textAllCaps="false"
+            android:text="普通请求Gson，显示Dialog,默认缓存 自定义时间"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.request_all}"
+            android:textAllCaps="false"
+            android:text="普通请求String,显示Dialog，缓存，自定义时间"/>
+
+    </LinearLayout>
+
+</layout>

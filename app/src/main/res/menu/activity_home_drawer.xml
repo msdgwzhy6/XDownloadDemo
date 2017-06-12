@@ -6,7 +6,7 @@
             android:id="@+id/nav_home"
             android:checked="true"
             android:icon="@drawable/ic_menu_home"
-            android:title="首页" />
+            android:title="更新" />
 
         <item
             android:id="@+id/nav_down"
@@ -14,9 +14,9 @@
             android:title="下载" />
 
         <item
-            android:id="@+id/nav_user"
+            android:id="@+id/nav_request"
             android:icon="@drawable/ic_menu_center"
-            android:title="个人中心" />
+            android:title="网络请求" />
 
         <item
             android:id="@+id/nav_settings"

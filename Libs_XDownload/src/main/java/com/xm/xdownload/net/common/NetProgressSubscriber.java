@@ -16,6 +16,7 @@ import com.xm.xdownload.widget.CustomProgress;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import okhttp3.ResponseBody;
 
 /**
  * @author: 小民
@@ -110,12 +111,15 @@ public class NetProgressSubscriber<T> implements Observer<T> {
     }
 
     @Override
-    public void onNext(T value) {
-        mSubscriberOnNextListener.onSucceed(value,mTag);
-        //如果需要缓存处理
-        if(mNetBufferConfig != NetBufferConfig.UN_BUFFER){
-            updateResulteBy(mTag,value);     //保存
+    public void onNext(T t) {
+        //回调
+        mSubscriberOnNextListener.onSucceed(t,mTag);
+        //如果需要缓存处理 ResponseBody 需要自己去存储
+        if(mNetBufferConfig != NetBufferConfig.UN_BUFFER && !(t instanceof ResponseBody)){
+            //保存到数据库
+            updateResulteBy(mTag,t);
         }
+
     }
 
     @Override
@@ -219,16 +223,8 @@ public class NetProgressSubscriber<T> implements Observer<T> {
      * @param t      需要缓存的类
      */
     private void updateResulteBy(String tag,T t){
-        BufferResulte resulte = BufferDbUtil.getInstance().query(tag);
-        long time = System.currentTimeMillis();
         String json = new GsonBuilder().create().toJson(t);
-        if (resulte == null) {
-            resulte = new BufferResulte(null,tag, json, time);
-            BufferDbUtil.getInstance().insert(resulte);
-        } else {
-            resulte.setResulte(json);
-            resulte.setTime(time);
-            BufferDbUtil.getInstance().update(resulte);
-        }
+        BufferDbUtil.getInstance().updateResulteBy(tag,json);
     }
+
 }

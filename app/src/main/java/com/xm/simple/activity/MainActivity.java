@@ -16,6 +16,7 @@ import com.xm.simple.R;
 import com.xm.simple.databinding.ActivityMainBinding;
 import com.xm.simple.fragment.DownloadFragment;
 import com.xm.simple.fragment.HomeFragment;
+import com.xm.simple.fragment.RequestFragment;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
         /* 禁止右滑显示可退出 */
         setSwipeBackEnable(false);
         /* 默认显示 首页 */
-        switchFragment("首页");
+        switchFragment("网络请求");
         /* 监听事件 */
         mBinding.navigationView.setNavigationItemSelectedListener(this);
     }
@@ -77,7 +78,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
                     rememberTargetFragment(channel,fragmentTransaction,currentFragment);
                 }
                 break;
-            case "个人中心":
+            case "网络请求":
+                if(currentFragment == null){
+                    currentFragment = new RequestFragment();
+                    rememberTargetFragment(channel,fragmentTransaction,currentFragment);
+                }
+                break;
             default:
                 ToastUtils.getInstance().toast("暂未开发.");
                 return;

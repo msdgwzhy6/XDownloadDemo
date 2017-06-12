@@ -44,4 +44,5 @@ dependencies {
     compile project(':Libs_Frame')
     //多包
     compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:support-v4:25.3.1'
 }

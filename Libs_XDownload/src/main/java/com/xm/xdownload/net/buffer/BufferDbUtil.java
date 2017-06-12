@@ -80,4 +80,22 @@ public class BufferDbUtil {
         QueryBuilder<BufferResulte> qb = downInfoDao.queryBuilder();
         return qb.list();
     }
+
+
+    /**
+     * 更新缓存数据
+     * @param json 缓存的Json
+     */
+    public void updateResulteBy(String tag, String json) {
+        BufferResulte resulte = BufferDbUtil.getInstance().query(tag);
+        long time = System.currentTimeMillis();
+        if (resulte == null) {
+            resulte = new BufferResulte(null, tag, json, time);
+            BufferDbUtil.getInstance().insert(resulte);
+        } else {
+            resulte.setResulte(json);
+            resulte.setTime(time);
+            BufferDbUtil.getInstance().update(resulte);
+        }
+    }
 }
