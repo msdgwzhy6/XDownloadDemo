@@ -42,5 +42,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     //基础框架，本人所有项目都在使用
     compile project(':Libs_Frame')
+    //多包
     compile 'com.android.support:multidex:1.0.1'
 }

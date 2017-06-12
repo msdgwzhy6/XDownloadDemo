@@ -12,7 +12,7 @@ import com.xm.simple.interfac.IConstantPool;
 /**
  * 功能:
  * 作者：小民
- * 创建时间：2017/5/26
+ * 创建时间：2017/5/26ww
  */
 public class App extends Application {
     // 入口函数
