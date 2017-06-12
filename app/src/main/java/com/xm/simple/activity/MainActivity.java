@@ -66,7 +66,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
         Fragment currentFragment = mFragmentHashMap.get(channel);
         switch (channel){
-            case "首页":
+            case "更新":
                 if(currentFragment == null){
                     currentFragment = new HomeFragment();
                     rememberTargetFragment(channel,fragmentTransaction,currentFragment);
