@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="392px"
+        android:background="@drawable/drawer_header">
+        <LinearLayout
+            android:paddingLeft="30px"
+            android:layout_marginBottom="30px"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/tv_defalult"
+                android:textColor="@color/white"
+                android:layout_marginBottom="10px"
+                android:textSize="35px"
+                android:text="Name"/>
+
+            <TextView
+                style="@style/tv_defalult"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                android:text="这家伙很懒，什么都没有留下"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

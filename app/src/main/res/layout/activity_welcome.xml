@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/status_bar_height"
+        tools:context=".activity.WelcomeActivity"
+        android:background="@drawable/welcome">
+        <ImageView
+            android:id="@+id/ivLoading"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="130px"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            app:layout_auto_baseheight="width"
+            android:background="@drawable/welcome_loading"/>
+    </RelativeLayout>
+
+
+</layout>

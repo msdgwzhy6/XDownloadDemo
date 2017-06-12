@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+
+repositories {
+    mavenCentral()
+}
+
+def config = rootProject.ext.configs;
+def lib = rootProject.ext.libs;
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+    }
+}
+
+dependencies {
+    compile "com.android.support:appcompat-v7:${lib.supportVersion}"
+    //屏幕适配
+    compile 'com.zhy:autolayout:1.4.5'
+}

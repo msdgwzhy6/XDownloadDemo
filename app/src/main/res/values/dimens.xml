@@ -1,0 +1,9 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- MainActivity  底部导航高度 -->
+    <dimen name="tool_bar_height">55dp</dimen>
+    <dimen name="tab_host_bar_height">55dp</dimen>
+</resources>

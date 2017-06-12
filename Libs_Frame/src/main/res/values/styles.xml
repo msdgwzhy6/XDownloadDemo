@@ -1,0 +1,53 @@
+<resources>
+    <!-- 状态栏适配 -->
+    <style name="status_bar">
+        <item name="android:layout_height">@dimen/status_bar_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/default_app_main_color</item>
+    </style>
+    <!-- Text默认格式 999999 -->
+    <style name="tv_defalult">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/defalult_text_size</item>
+        <item name="android:textColor">@color/defalult_text_color</item>
+    </style>
+    <style name="tv_defalult_white" parent="tv_defalult">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <!-- Edit默认格式 -->
+    <style name="et_default">
+        <item name="android:textSize">@dimen/defalult_text_size</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColorHint">#CACACA</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:maxLength">20</item>
+    </style>
+    <!-- 手机号码 -->
+    <style name="et_phone" parent="et_default">
+        <item name="android:hint">请输入您的手机号码</item>
+        <item name="android:maxLength">11</item>
+        <item name="android:inputType">numberSigned</item>
+        <item name="android:digits">0123456789</item>
+    </style>
+    <!-- 密码 -->
+    <style name="et_pwd" parent="et_default">
+        <item name="android:maxLength">15</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:hint">请输入登录密码</item>
+        <item name="android:digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</item>
+    </style>
+    <!-- 分离线 -->
+    <style name="divider_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/defalut_divider_color</item>
+    </style>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 下载按钮View -->
+    <declare-styleable name="DownloadButton">
+        <attr name="background_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="text_color" format="color" />
+        <attr name="progress_width" format="dimension" />
+        <attr name="progress_color" format="color" />
+        <attr name="progress_bg_color" format="color" />
+    </declare-styleable>
+</resources>

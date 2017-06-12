@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="item"
+            type="com.xm.simple.data.DownloadData"/>
+        <variable
+            name="downPersenter"
+            type="com.xm.simple.fragment.DownloadFragment.ContentAdapter.DownPersenter"/>
+    </data>
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="280px"
+            android:orientation="horizontal">
+            <LinearLayout style="@style/ll_equally_w">
+                <ImageView
+                    android:layout_width="120px"
+                    android:layout_height="120px"
+                    app:imageUrl="@{item.logo_url}"/>
+            </LinearLayout>
+            <LinearLayout style="@style/ll_equally_w" android:gravity="left|center_vertical" android:layout_weight="1.5">
+                <TextView
+                    style="@style/tv_defalult"
+                    android:textColor="@android:color/black"
+                    android:textSize="35px"
+                    android:text="@{item.name}"/>
+                <TextView
+                    style="@style/tv_defalult"
+                    android:textSize="25px"
+                    android:layout_marginTop="10px"
+                    android:text="@{@string/download_version_name(item.version_name)}"/>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_marginTop="15px"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20px"
+                    android:max="100"
+                    android:progress="@{item.progress}"
+                    android:progressDrawable="@drawable/progressbar"
+                    android:visibility="@{item.isShowProgress ? View.VISIBLE : View.GONE}"
+                    android:layout_marginRight="8dp"/>
+                <TextView
+                    style="@style/tv_defalult"
+                    android:layout_marginTop="15px"
+                    android:visibility="@{item.isShowProgress ? View.GONE : View.VISIBLE}"
+                    android:text="@{@string/download_version_size(item.size_fixed)}"/>
+            </LinearLayout>
+            <LinearLayout style="@style/ll_equally_w">
+                <Button
+                    style="@style/download_btn"
+                    android:onClick="@{() -> downPersenter.download(item)}"
+                    android:text="@{item.stateText}"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>

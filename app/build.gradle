@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+def config = rootProject.ext.configs;
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+    //支持dataBinding
+    dataBinding {
+        enabled = true;
+    }
+
+    //设置分包的最大限制，防止出现过大导致应用无法编译的问题
+    dexOptions {
+        javaMaxHeapSize "2g"
+        preDexLibraries true
+    }
+
+
+    defaultConfig {
+        applicationId "com.xm.newsource"
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //基础框架，本人所有项目都在使用
+    compile project(':Libs_Frame')
+    compile 'com.android.support:multidex:1.0.1'
+}

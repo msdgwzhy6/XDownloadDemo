@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "C:\\Users\\Administrator\\Desktop\\git\\XDownload\\Libs_SwipeBackLayout\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v13\\values-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\.android\\build-cache\\9371e9520418f19fc4edc703de3a9580007a01f4\\output\\res\\values-v13\\values-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 58,
+                        "endOffset": 109
+                    }
+                }
+            }
+        ]
+    }
+]
