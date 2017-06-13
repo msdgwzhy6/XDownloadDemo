@@ -1,4 +1,4 @@
-package com.xm.frame.utils;
+package com.xm.xdownload.utils;
 
 import android.content.Context;
 import android.support.annotation.StringRes;

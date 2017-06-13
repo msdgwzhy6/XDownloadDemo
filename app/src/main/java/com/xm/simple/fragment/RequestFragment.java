@@ -6,9 +6,9 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.xm.frame.fragment.BaseFragment;
-import com.xm.frame.simple.SimpleNetResponseListener;
-import com.xm.frame.utils.ToastUtils;
+import com.xm.simple.base.BaseFragment;
+import com.xm.xdownload.net.common.SimpleNetResponseListener;
+import com.xm.xdownload.utils.ToastUtils;
 import com.xm.simple.R;
 import com.xm.simple.bean.BriefListBean;
 import com.xm.simple.databinding.FragmentRequestBinding;

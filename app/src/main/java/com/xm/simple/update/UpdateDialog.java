@@ -1,4 +1,4 @@
-package com.xm.frame.update;
+package com.xm.simple.update;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,12 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.xm.frame.R;
-import com.xm.frame.utils.StringUtils;
-
-import com.xm.frame.widget.DownloadButton;
-import com.xm.frame.widget.WaveDrawable;
+import com.xm.simple.R;
 import com.xm.xdownload.net.buffer.DownInfo;
+import com.xm.xdownload.utils.ToastUtils;
 import com.zhy.autolayout.utils.AutoUtils;
 
 
@@ -50,7 +47,7 @@ public class UpdateDialog extends Dialog{
         ivLogo.setImageDrawable(mWaveDrawable);
         //初始化更新内容
         ((TextView)mInflate.findViewById(R.id.tv_version)).setText("v" + version);
-        if (StringUtils.isNotEmpty(content)){
+        if (content != null){
             ((TextView)mInflate.findViewById(R.id.tv_content)).setText(content);
         }
         //更新按钮
@@ -62,6 +59,9 @@ public class UpdateDialog extends Dialog{
         switch (info.getState()){
             case DOWN:
                 mDownloadButton.start(DownloadButton.Status.START);  //显示进度条
+                break;
+            case WAIT:
+                ToastUtils.getInstance().toast("队列已满，请重试.");
                 break;
             default:
                 mDownloadButton.start(DownloadButton.Status.PAUSE);

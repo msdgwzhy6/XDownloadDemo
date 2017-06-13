@@ -8,7 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Libs_Frame" />
             <option value="$PROJECT_DIR$/Libs_SwipeBackLayout" />
             <option value="$PROJECT_DIR$/Libs_XDownload" />
             <option value="$PROJECT_DIR$/app" />

@@ -10,8 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
-import com.xm.frame.activity.BaseActivity;
-import com.xm.frame.utils.ToastUtils;
+import com.xm.simple.base.BaseActivity;
+import com.xm.xdownload.utils.ToastUtils;
 import com.xm.simple.R;
 import com.xm.simple.databinding.ActivityMainBinding;
 import com.xm.simple.fragment.DownloadFragment;

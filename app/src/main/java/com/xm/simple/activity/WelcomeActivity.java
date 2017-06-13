@@ -9,11 +9,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
-import com.xm.frame.activity.BaseActivity;
-import com.xm.frame.utils.ToastUtils;
-import com.xm.simple.App;
 import com.xm.simple.R;
+import com.xm.simple.base.BaseActivity;
 import com.xm.simple.databinding.ActivityWelcomeBinding;
+import com.xm.xdownload.utils.ToastUtils;
 
 import java.util.concurrent.Callable;
 
@@ -44,8 +43,6 @@ public class WelcomeActivity extends BaseActivity<ActivityWelcomeBinding> {
             public Boolean call() throws Exception {
                 //模拟做了一些初始化耗时操作
                 Thread.sleep(1500);
-                //异步初始化
-                App.getInstance().init();
                 return true;
             }
         }).observeOn(AndroidSchedulers.mainThread())

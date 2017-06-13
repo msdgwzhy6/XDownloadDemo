@@ -1,12 +1,6 @@
-package com.xm.frame.utils;
+package com.xm.simple.utils;
 
-import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,31 +11,6 @@ import java.util.regex.Pattern;
  */
 public class StringUtils {
     private StringUtils(){}
-
-    /**
-     * 对字符串进行舍弃操作 -
-     * @param val        要转换的值
-     * @param newScale   保留位
-     * @return           值
-     */
-    public static double toDoubleValue(double val,int newScale){
-        String valueOf = String.valueOf(val);
-        int position = valueOf.length() - valueOf.indexOf(".") - 1;      //? 为什么这么做。。因为你少于3位 去转，会出现 10.8 等于 10.799的bug
-        if(position > newScale){
-            BigDecimal bigDecimal = new BigDecimal(val);
-            bigDecimal =  bigDecimal.setScale(newScale,BigDecimal.ROUND_DOWN);
-            return bigDecimal.doubleValue();
-        }else{
-            return val;
-        }
-        /*
-        setScale(2);//表示保留2位小数，默认用四舍五入方式
-        setScale(2,BigDecimal.ROUND_DOWN);//直接删除多余的小数位  11.116约=11.11
-        setScale(2,BigDecimal.ROUND_UP);//临近位非零，则直接进位；临近位为零，不进位。11.114约=11.12
-        setScale(2,BigDecimal.ROUND_HALF_UP);//四舍五入 2.335约=2.33，2.3351约=2.34
-        setScaler(2,BigDecimal.ROUND_HALF_DOWN);//四舍五入；2.335约=2.33，2.3351约=2.34，11.117约11.12
-         */
-    }
     /** 字符串去尾号0处理 */
     public static String toNumberFormat(double value){
         NumberFormat nf = NumberFormat.getInstance();

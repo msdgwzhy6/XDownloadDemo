@@ -1,1 +1,1 @@
-include ':app', ':Libs_Frame', ':Libs_SwipeBackLayout', ':Libs_XDownload'
+include ':app', ':Libs_SwipeBackLayout', ':Libs_XDownload'

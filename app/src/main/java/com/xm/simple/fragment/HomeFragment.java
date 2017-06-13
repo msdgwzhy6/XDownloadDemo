@@ -4,8 +4,8 @@ package com.xm.simple.fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.xm.frame.fragment.BaseFragment;
-import com.xm.frame.update.UpdateDialog;
+import com.xm.simple.base.BaseFragment;
+import com.xm.simple.update.UpdateDialog;
 import com.xm.simple.R;
 import com.xm.simple.databinding.FragmentHomeBinding;
 import com.xm.xdownload.net.buffer.DownInfo;

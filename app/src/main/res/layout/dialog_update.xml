@@ -48,7 +48,7 @@
                     />
             </LinearLayout>
 
-            <com.xm.frame.widget.DownloadButton
+            <com.xm.simple.update.DownloadButton
                 android:id="@+id/btn_download"
                 android:layout_gravity="center"
                 android:layout_width="490px"

@@ -1,7 +1,7 @@
-package com.xm.frame.simple;
+package com.xm.xdownload.net.common;
 
-import com.xm.xdownload.net.common.NetResponseListener;
-import com.xm.frame.utils.ToastUtils;
+
+import com.xm.xdownload.utils.ToastUtils;
 
 /**
  * @author: 小民

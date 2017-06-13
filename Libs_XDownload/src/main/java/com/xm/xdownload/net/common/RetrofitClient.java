@@ -8,6 +8,7 @@ import com.xm.xdownload.net.buffer.BufferDbUtil;
 import com.xm.xdownload.net.buffer.DownInfoDbUtil;
 import com.xm.xdownload.net.download.HttpDownService;
 import com.xm.xdownload.utils.NetworkUtil;
+import com.xm.xdownload.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -291,6 +292,8 @@ public class RetrofitClient {
             }
             //初始化Retrofit
             mRetrofitClient = new RetrofitClient(this);
+            //Toast
+            ToastUtils.init(context);
             //文件操作
             NetworkUtil.init(context,applictionId);
             //初始化数据 -> 用户网络缓存

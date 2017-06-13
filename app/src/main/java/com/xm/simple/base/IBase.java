@@ -1,4 +1,4 @@
-package com.xm.frame.interfac;
+package com.xm.simple.base;
 
 import android.os.Bundle;
 

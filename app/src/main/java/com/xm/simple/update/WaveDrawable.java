@@ -1,4 +1,4 @@
-package com.xm.frame.widget;
+package com.xm.simple.update;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

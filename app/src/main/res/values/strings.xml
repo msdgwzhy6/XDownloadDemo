@@ -6,7 +6,7 @@
     <string name="close">关闭</string>
     <!-- 提示信息 -->
     <string name="thank_yout">感谢您的支持.给个Star吧!</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- 下载的string配置  因为这样做，第一个规范。第二 充分利用 dataBind特性-->
+    <string name="download_version_name">版本：%s</string>
+    <string name="download_version_size">大小：%sMB</string>
 </resources>

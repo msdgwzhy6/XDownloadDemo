@@ -3,9 +3,15 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/default_app_main_color</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/default_app_main_color</item>
+        <item name="colorAccent">@color/default_app_main_color</item>
         <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <!-- 状态栏适配 -->
+    <style name="status_bar">
+        <item name="android:layout_height">@dimen/status_bar_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/default_app_main_color</item>
     </style>
     <!-- ToolBar菜单样式 -->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -45,5 +51,36 @@
         <item name="android:textSize">@dimen/defalult_text_size</item>
         <item name="android:textColor">@color/default_app_main_color</item>
         <item name="android:background">@drawable/btn_down_normal</item>
+    </style>
+    <!-- Text默认格式 999999 -->
+    <style name="tv_defalult">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/defalult_text_size</item>
+        <item name="android:textColor">@color/defalult_text_color</item>
+    </style>
+    <style name="tv_defalult_white" parent="tv_defalult">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <!-- Edit默认格式 -->
+    <style name="et_default">
+        <item name="android:textSize">@dimen/defalult_text_size</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColorHint">#CACACA</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:maxLength">20</item>
+    </style>
+    <!-- 分离线 -->
+    <style name="divider_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/defalut_divider_color</item>
     </style>
 </resources>

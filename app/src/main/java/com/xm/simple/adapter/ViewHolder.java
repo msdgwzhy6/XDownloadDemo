@@ -1,4 +1,4 @@
-package com.xm.frame.adapter;
+package com.xm.simple.adapter;
 
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;

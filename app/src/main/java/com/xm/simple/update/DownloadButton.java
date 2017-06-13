@@ -1,4 +1,4 @@
-package com.xm.frame.widget;
+package com.xm.simple.update;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -13,14 +13,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.xm.frame.R;
+import com.xm.simple.R;
 
-import static com.xm.frame.R.styleable.DownloadButton_background_color;
-import static com.xm.frame.R.styleable.DownloadButton_progress_bg_color;
-import static com.xm.frame.R.styleable.DownloadButton_progress_color;
-import static com.xm.frame.R.styleable.DownloadButton_progress_width;
-import static com.xm.frame.R.styleable.DownloadButton_text_color;
-import static com.xm.frame.R.styleable.DownloadButton_text_size;
+import static com.xm.simple.R.styleable.DownloadButton_background_color;
+import static com.xm.simple.R.styleable.DownloadButton_progress_bg_color;
+import static com.xm.simple.R.styleable.DownloadButton_progress_color;
+import static com.xm.simple.R.styleable.DownloadButton_progress_width;
+import static com.xm.simple.R.styleable.DownloadButton_text_color;
+import static com.xm.simple.R.styleable.DownloadButton_text_size;
 
 
 /**
