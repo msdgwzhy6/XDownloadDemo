@@ -7,7 +7,6 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -71,6 +70,8 @@ public class DownloadFragment extends BaseFragment<FragmentDownloadBinding> impl
                         //本地数据库缓存
                         List<DownloadData> list = localList(data.getList());
                         mCommonAdapter.clearAddAll(list);
+                        //如果你需要，让默认等待的队列，开始下载，你就执行这句
+                        mRetrofitDownloadManager.downloadAll();
                     }
 
                     //从缓冲区获得
@@ -190,7 +191,7 @@ public class DownloadFragment extends BaseFragment<FragmentDownloadBinding> impl
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.e("tag","onDestroy");
+        //切记要销毁，以免队列资源不回手
         mRetrofitDownloadManager.destory();
     }
 }

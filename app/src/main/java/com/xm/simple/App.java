@@ -48,7 +48,7 @@ public class App extends Application {
                 .setBaseUrl(IConstantPool.sCommonUrl)
                 .setApplictionId(BuildConfig.APPLICATION_ID)
                 /** 以下都是按需设置 */
-                .setDownloadsQueueCount(2)                 //下载最大数量
+                .setDownloadsQueueCount(1)                 //下载最大数量
                 .setDbName("net_buffer_db")                //数据库表名
                 .setConnectionTimeout(6)                   //普通请求连接超时
                 .setReadTimeout(6)                         //普通请求读取超时

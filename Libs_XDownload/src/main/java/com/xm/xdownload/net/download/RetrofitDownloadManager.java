@@ -71,10 +71,12 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
         if(RetrofitClient.client().getCurrentDownloadCount() >= RetrofitClient.client().getMaxDownloadCount()){
             Log.e("tag","进入等待");
             updateState(downInfo,DownState.WAIT);
-            //记录
-            mProgressSubscriberHashMap.put(downInfo, null);
+            //加入等待队列
+            mProgressSubscriberHashMap.put(downInfo,null);
             return;
         }
+        //新增队列
+        RetrofitClient.client().addCurrentDownloadCount();
         //观察者
         DownloadSubscriber<DownInfo> downloadSubscriber = new DownloadSubscriber<>(downInfo,this);
         //开始下载
@@ -94,8 +96,6 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
                 .subscribe(downloadSubscriber);
         //记录
         mProgressSubscriberHashMap.put(downInfo, downloadSubscriber);
-        //新增队列
-        RetrofitClient.client().addCurrentDownloadCount();
         //输出log
         RetrofitClient.log("开始下载："+ downInfo.getUrl() + " 起始点：" + downInfo.getReadLength());
     }
@@ -111,7 +111,7 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
                 DownInfo next = iterator.next();
                 if(next.getState() == DownState.DOWN){
                     pause(next,false);
-                    next.setDownState(DownState.WAIT.getState());
+                    updateState(next,DownState.WAIT,false);
                     break;
                 }
             }
@@ -243,6 +243,11 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
         if (downInfo.getState() == DownState.DOWN) {
             downInfo.setDownState(DownState.PAUSE.getState());
         }
+        //只要不是 完成状态，都记录起来。可以开启自动下载
+        if (downInfo.getState() != DownState.FINISH){
+            mProgressSubscriberHashMap.put(downInfo,null);
+        }
+        //设置监听
         downInfo.setListener(this);
         return downInfo;
     }
@@ -257,7 +262,9 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
         Iterator<DownInfo> iterator = downInfos.iterator();
         while (iterator.hasNext()) {
             DownInfo next = iterator.next();
-            pause(next,false);
+            if(next.getState() == DownState.DOWN){
+                pause(next,false);
+            }
         }
         mProgressSubscriberHashMap.clear();
         mProgressSubscriberHashMap = null;
@@ -298,6 +305,8 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
     public void updateState(DownInfo info, final DownState state, boolean isNextDownload) {
         RetrofitClient.log(String.format("下载地址:%s\n状态：%d",info.getUrl(),state.getState()));
         info.setDownState(state.getState());
+        //更新下载的数据
+        DownInfoDbUtil.getInstance().update(info);
         //查找队列是否需要开启
         switch (state){
             //暂停，停止，错误，完成，开启下一个下载
@@ -315,8 +324,6 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
             default:
                 break;
         }
-        //更新下载的数据
-        DownInfoDbUtil.getInstance().update(info);
         // 回调 主线程
         Observable.just(info)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -327,15 +334,36 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
                     }
                 });
     }
-    /** 查找下一个 为 WAIT 状态的队列 */
+
+    /** 查找 为 WAIT 状态的队列 并开启他，只开一个 */
     private void nextDownload(){
-        if(RetrofitClient.client().getCurrentDownloadCount() < RetrofitClient.client().getMaxDownloadCount()){
-            Set<DownInfo> downInfos = mProgressSubscriberHashMap.keySet();
-            Iterator<DownInfo> iterator = downInfos.iterator();
-            while (iterator.hasNext()){
-                DownInfo next = iterator.next();
-                if(next.getState() == DownState.WAIT){
+        Set<DownInfo> downInfos = mProgressSubscriberHashMap.keySet();
+        Iterator<DownInfo> iterator = downInfos.iterator();
+        while (iterator.hasNext()) {
+            DownInfo next = iterator.next();
+            if (next.getState() == DownState.WAIT) {
+                //如果处于等待。并且队列没满
+                if (RetrofitClient.client().getCurrentDownloadCount() < RetrofitClient.client().getMaxDownloadCount()) {
                     start(next);
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    /** 开始全部下载,一般用户app重新打开时 */
+    public void downloadAll(){
+        Set<DownInfo> downInfos = mProgressSubscriberHashMap.keySet();
+        Iterator<DownInfo> iterator = downInfos.iterator();
+        while (iterator.hasNext()) {
+            DownInfo next = iterator.next();
+            //四种状态下，自动重启队列 NORMAL（正常） PAUSE（暂停） STOP（停止） ERROR（错误）
+            if (next.getState() == DownState.NORMAL || next.getState() == DownState.PAUSE || next.getState() == DownState.STOP || next.getState() == DownState.ERROR) {
+                //如果处于等待。并且队列没满
+                if (RetrofitClient.client().getCurrentDownloadCount() < RetrofitClient.client().getMaxDownloadCount()) {
+                    down(next);
+                } else {
                     break;
                 }
             }
