@@ -26,7 +26,7 @@ import okhttp3.ResponseBody;
  * @author: 小民
  * @date: 2017-06-07
  * @time: 15:54
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 下载工具类
  */
 public class RetrofitDownloadManager implements NetProgressListener, DownResultListenner {
@@ -358,8 +358,8 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
         Iterator<DownInfo> iterator = downInfos.iterator();
         while (iterator.hasNext()) {
             DownInfo next = iterator.next();
-            //四种状态下，自动重启队列 NORMAL（正常） PAUSE（暂停） STOP（停止） ERROR（错误）
-            if (next.getState() == DownState.NORMAL || next.getState() == DownState.PAUSE || next.getState() == DownState.STOP || next.getState() == DownState.ERROR) {
+            //四种状态下，自动重启队列 WAIT（等待） PAUSE（暂停） STOP（停止） ERROR（错误）
+            if (next.getState() == DownState.WAIT || next.getState() == DownState.PAUSE || next.getState() == DownState.STOP || next.getState() == DownState.ERROR) {
                 //如果处于等待。并且队列没满
                 if (RetrofitClient.client().getCurrentDownloadCount() < RetrofitClient.client().getMaxDownloadCount()) {
                     down(next);

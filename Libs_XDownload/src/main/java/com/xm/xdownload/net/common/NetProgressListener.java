@@ -4,7 +4,7 @@ package com.xm.xdownload.net.common;
  * @author: 小民
  * @date: 2017-06-06
  * @time: 20:23
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 网络请求过程中的进度
  */
 public interface NetProgressListener {

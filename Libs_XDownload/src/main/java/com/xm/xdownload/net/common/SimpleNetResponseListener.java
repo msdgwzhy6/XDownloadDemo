@@ -7,7 +7,7 @@ import com.xm.xdownload.utils.ToastUtils;
  * @author: 小民
  * @date: 2017-06-05
  * @time: 23:19
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明:
  */
 public abstract class SimpleNetResponseListener<T> implements NetResponseListener<T> {

@@ -14,7 +14,7 @@ import okio.Source;
  * @author: 小民
  * @date: 2017-06-06
  * @time: 20:26
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 自定义进度条 Body
  */
 public class NetProgressResponseBody extends ResponseBody {

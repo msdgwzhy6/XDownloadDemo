@@ -10,7 +10,7 @@ import java.util.List;
  * @author: 小民
  * @date: 2017-06-06
  * @time: 11:16
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 用于网络请求过程的  缓存
  */
 public class BufferDbUtil {

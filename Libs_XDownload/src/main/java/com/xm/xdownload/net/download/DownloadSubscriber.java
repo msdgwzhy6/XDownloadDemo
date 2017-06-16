@@ -11,7 +11,7 @@ import io.reactivex.disposables.Disposable;
  * @author: 小民
  * @date: 2017-06-08
  * @time: 09:52
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明:
  */
 public class DownloadSubscriber<T> implements Observer<T> {

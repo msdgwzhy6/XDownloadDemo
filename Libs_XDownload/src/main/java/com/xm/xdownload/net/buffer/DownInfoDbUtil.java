@@ -12,7 +12,7 @@ import java.util.List;
  * @author: 小民
  * @date: 2017-06-08
  * @time: 15:29
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明:
  */
 public class DownInfoDbUtil {

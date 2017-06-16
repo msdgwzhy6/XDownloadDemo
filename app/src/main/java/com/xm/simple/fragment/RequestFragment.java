@@ -78,6 +78,16 @@ public class RequestFragment extends BaseFragment<FragmentRequestBinding> {
                         }
 
                     }));
+            RetrofitClient.getService(HttpService.class)
+                    .requestList_GSON()
+                    .compose(new ApplySchedulers<List<BriefListBean>>())
+                    .subscribe(new NetProgressSubscriber<>(RequestFragment.this, NetDialogConfig.NORMAL_LOADING, new SimpleNetResponseListener<List<BriefListBean>>() {
+                        @Override
+                        public void onSucceed(List<BriefListBean> bean, String s) {
+                                ToastUtils.getInstance().toast("拿到好多数据："  + bean.size());
+
+                        }
+                    }));
         }
 
         /** 普通请求，返回Gson 加载数据过程中，不可取消  */

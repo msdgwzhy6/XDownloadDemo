@@ -22,7 +22,7 @@ import okhttp3.ResponseBody;
  * @author: 小民
  * @date: 2017-06-05
  * @time: 18:26
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 带进度条的 subscriber
  */
 public class NetProgressSubscriber<T> implements Observer<T> {

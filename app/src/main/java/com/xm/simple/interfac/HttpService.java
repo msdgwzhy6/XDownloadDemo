@@ -15,7 +15,7 @@ import retrofit2.http.Query;
  * @author: 小民
  * @date: 2017-06-05
  * @time: 16:22
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 网络请求，用了360的接口。如有侵权联系本人删除
  */
 public interface HttpService {

@@ -10,7 +10,7 @@ import okhttp3.Response;
  * @author: 小民
  * @date: 2017-06-06
  * @time: 20:40
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明:
  */
 public class NetProgressInterceptor implements Interceptor {

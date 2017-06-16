@@ -13,7 +13,7 @@ import java.util.Random;
  * @author: 小民
  * @date: 2017-06-06
  * @time: 14:21
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 下载请求基础类
  */
 @Entity

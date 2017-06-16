@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
  * @author: 小民
  * @date: 2017-06-03
  * @time: 11:57
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 自定义属性绑定 DataBinding   XML中使用
  */
 public class BindingAdapter {

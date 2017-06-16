@@ -14,7 +14,7 @@ import io.reactivex.functions.Function;
  * @author: 小民
  * @date: 2017-06-05
  * @time: 17:32
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 网络失败时，用于重新连接
  */
 public class RetryWhenNetwork implements Function<Observable<? extends Throwable>, Observable<?>> {

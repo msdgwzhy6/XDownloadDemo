@@ -11,7 +11,7 @@ import retrofit2.http.Url;
  * @author: 小民
  * @date: 2017-06-08
  * @time: 20:58
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 下载文件专用
  */
 public interface HttpDownService {

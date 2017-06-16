@@ -24,7 +24,7 @@ import okhttp3.ResponseBody;
  * @author: 小民
  * @date: 2017-06-06
  * @time: 14:53
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 文件操作类
  */
 public class NetworkUtil {

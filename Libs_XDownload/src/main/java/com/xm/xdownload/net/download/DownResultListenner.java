@@ -7,7 +7,7 @@ import com.xm.xdownload.net.buffer.DownState;
  * @author: 小民
  * @date: 2017-06-08
  * @time: 13:24
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明: 下载监听回调
  */
 public interface DownResultListenner {

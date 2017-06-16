@@ -18,7 +18,7 @@ import com.xm.xdownload.utils.NetworkUtil;
  * @author: 小民
  * @date: 2017-06-03
  * @time: 16:30
- * @开源地址: https://github.com/2745329043/NewSource
+ * @开源地址: https://github.com/2745329043/XDownloadDemo
  * @说明:
  */
 public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
@@ -73,7 +73,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
                         mRetrofitDownloadManager.down(mDownInfo);
                     }
                 });
-        //下载对象 - 这种方式。如果你需要断点，一点要用这个
+        //下载对象 - 这种方式。一点要用这个
         mDownInfo = mRetrofitDownloadManager.createDownInfo("http://gdown.baidu.com/data/wisegame/41e4d8d8127bb502/baidushoujizhushou_16793302.apk");
         //不是新建,查看刷新 进度条。
         if(mDownInfo.getState() != DownState.NORMAL){
