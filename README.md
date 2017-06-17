@@ -5,16 +5,16 @@ ps : 当然当然，都封装好了，你也可以无视
 
 ----------
 
-[TOC]
 #GitHub地址
 > 如果你觉得好用，对你有帮助，请给个star
 > 接口使用360市场的如果有侵权，联系本人删除，谢谢
->  —— <a href="https://github.com/2745329043/XDownloadDemo" target="_blank"> [ Demo地址，点击打开 ]
 
 #效果图
 ![这里写图片描述](http://img.blog.csdn.net/20170617180411464?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ![这里写图片描述](http://img.blog.csdn.net/20170617180428230?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ![这里写图片描述](http://img.blog.csdn.net/20170617180440613?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
 #主要功能
 
 - **自动更新，酷炫的水波纹 **
@@ -32,6 +32,7 @@ ps : 当然当然，都封装好了，你也可以无视
 
 在当前工程中引入
 compile 'com.github.2745329043:XDownloadLibrary:1.0.5'
+
 最好直接参考demo
 https://github.com/2745329043/XDownloadDemo
 
