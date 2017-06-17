@@ -237,7 +237,7 @@ public class RetrofitClient {
         }
 
         /**
-         * 是否开启网络请求输出
+         * 是否开启网络请求输出 调试日志
          * @param debug
          */
         public Builder setDebug(boolean debug) {

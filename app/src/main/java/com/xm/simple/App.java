@@ -29,7 +29,7 @@ public class App extends Application {
         application = this;
         //初始化网络请求
         RetrofitClient.init(this)
-                .setDebug(true)
+                .setDebug(true)              //是否输出调试日志
                 .setBaseUrl(IConstantPool.sCommonUrl)
                 .setApplictionId(BuildConfig.APPLICATION_ID)
                 /** 以下都是按需设置 */
