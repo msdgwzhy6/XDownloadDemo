@@ -54,7 +54,7 @@ dependencies {
     compile 'com.gyf.barlibrary:barlibrary:2.1.9'
     //网络请求，多线程下载
     compile project(':Libs_XDownload')
-//    compile 'com.github.2745329043:XDownloadLibrary:1.0.3'
+//    compile 'com.github.2745329043:XDownloadLibrary:1.0.4'
     //RxPermissions  基于 RxJava的权限申请
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
     //图片加载 Gilde  基于 OkHttp底层 jar
