@@ -71,11 +71,11 @@ public interface HttpService {
             @Query("type") int type
     );
 
-    /* 普通请求 Get -> 获取 String 版本*/
+    /* 普通请求 Get - 获取 String 版本*/
     @GET(IConstantPool.REQUEST_LIST_URL)
     Observable<ResponseBody> requestList();
 
-    /* 普通请求 Get -> 获取 GSON版本 版本 -> 这奇葩结构   是List<XXX> 的这种*/
+    /* 普通请求 Get - 获取 GSON版本 版本 - 这奇葩结构   是List<XXX> 的这种*/
     @GET(IConstantPool.REQUEST_LIST_URL)
     Observable<List<BriefListBean>> requestList_GSON();
 }
