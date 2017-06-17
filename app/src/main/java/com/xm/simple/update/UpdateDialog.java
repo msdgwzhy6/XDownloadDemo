@@ -42,6 +42,7 @@ public class UpdateDialog extends Dialog{
     private void initView(View inflate, @DrawableRes int imgRes , String version, String content, View.OnClickListener onClickListener){
         ImageView ivLogo = (ImageView) mInflate.findViewById(R.id.iv_logo);
         //这里其实是，autoLayout的，计算 250px 在当前手机上 因该显示多少
+        //你不用auto那么就用 dp，当然你有多套图，不限制也不是不行
         int percentWidthSize = AutoUtils.getPercentWidthSize(250);
         //然后 新建的 WaveDrawable 显示为多大，这个是怕外包公司就一套图的情况，图片在一些机型上，变形，不好看
         mWaveDrawable = new WaveDrawable(getContext(), imgRes,percentWidthSize,percentWidthSize);
