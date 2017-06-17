@@ -73,7 +73,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
                         mRetrofitDownloadManager.down(mDownInfo);
                     }
                 });
-        //下载对象 - 这种方式。一点要用这个
+        //下载对象 - 这种方式。一定要用這個
         mDownInfo = mRetrofitDownloadManager.createDownInfo("http://gdown.baidu.com/data/wisegame/41e4d8d8127bb502/baidushoujizhushou_16793302.apk");
         //不是新建,查看刷新 进度条。
         if(mDownInfo.getState() != DownState.NORMAL){

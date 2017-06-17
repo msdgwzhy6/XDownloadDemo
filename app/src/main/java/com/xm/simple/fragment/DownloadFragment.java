@@ -88,6 +88,8 @@ public class DownloadFragment extends BaseFragment<FragmentDownloadBinding> impl
     public void updateProgress(DownInfo info, int progress) {
         DownloadData downloadData = queryDownloadData(info);
         if(downloadData != null){
+            //databind 内部利用 notifyPropertyChanged 刷新布局
+            //如果你不是用的 dataBind  那么你自己要在这边刷新布局显示咯
             downloadData.updateProgress(DownState.DOWN);
         }
     }
@@ -96,6 +98,8 @@ public class DownloadFragment extends BaseFragment<FragmentDownloadBinding> impl
     public void updateState(DownInfo info, DownState state) {
         DownloadData downloadData = queryDownloadData(info);
         if(downloadData != null){
+            //databind 内部利用 notifyPropertyChanged 刷新布局
+            //如果你不是用的 dataBind  那么你自己要在这边刷新布局显示咯
             downloadData.updateProgress(state);
         }
     }
