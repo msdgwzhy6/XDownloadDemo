@@ -181,7 +181,7 @@ public class RequestFragment extends BaseFragment<FragmentRequestBinding> {
                                 String result = body.string();  //取到json
                                 ToastUtils.getInstance().toast("网络拿的："  + result);
                                 /**
-                                 * 切记 切记，因为  ResponseBody的特殊行，只能自己在回调里面存
+                                 * 切记 切记，因为  ResponseBody的特殊性，只能自己在回调里面存
                                  */
                                 BufferDbUtil.getInstance().updateResulteBy(IConstantPool.REQUEST_LIST_URL + ":string",result);
                             } catch (IOException e) {
