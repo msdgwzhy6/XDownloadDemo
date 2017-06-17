@@ -110,19 +110,14 @@ RetrofitClient.getService(HttpService.class)
  }));
 ```
 ###网络请求过程中，是否显示Dialog
-参数     | 说明
--------- | ---
 NetDialogConfig.UN_LOADING| 不显示
 NetDialogConfig.NORMAL_LOADING| 显示,点击Dialog外,销毁并关闭队列
 NetDialogConfig.FORBID_LOADING| 显示,不可取消
-#
 
 ###网络请求过程中，是否缓存数据
-
-参数     | 说明
--------- | ---
 NetBufferConfig.NORMAL_BUFFER| 缓存(ps:以初始化app)
 NetBufferConfig.UN_BUFFER| 不缓存
+
 ###缓存使用案例
 ![Demo中截图](http://img.blog.csdn.net/20170615173955341?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
