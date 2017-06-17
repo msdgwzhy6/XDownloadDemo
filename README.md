@@ -119,15 +119,49 @@ NetBufferConfig.NORMAL_BUFFER| 缓存(ps:以初始化app)
 NetBufferConfig.UN_BUFFER| 不缓存
 
 ###缓存使用案例
-![Demo中截图](http://img.blog.csdn.net/20170615173955341?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 
 ###自定义缓存时间使用案例
-![这里写图片描述](http://img.blog.csdn.net/20170615174207471?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+``` python
+RetrofitClient.getService(HttpService.class)
+    .requestList_GSON()
+    .compose(new ApplySchedulers<List<BriefListBean>>())
+    //多了一个  请求地址的标识 IConstantPool.REQUEST_LIST_URL。因为数据是根据 接口来存，确保唯一性
+    .subscribe(new NetProgressSubscriber<>(RequestFragment.this, IConstantPool.REQUEST_LIST_URL, NetDialogConfig.NORMAL_LOADING, NetBufferConfig.NORMAL_BUFFER, new SimpleNetResponseListener<List<BriefListBean>>() {
+	@Override
+	public void onSucceed(List<BriefListBean> briefListBeen, String s) {
+	    ToastUtils.getInstance().toast("拿到好多数据："  + briefListBeen.size());
+	}
+
+	//这个是从本地取的
+	@Override
+	public void onCookieSucceed(String result, String mothead) {
+	    //这里需要这样解析转换后，返回 给 onSucceed
+	    TypeToken type = new TypeToken<List<BriefListBean>>() {};
+	    List<BriefListBean> list = new Gson().fromJson(result, type.getType());
+	    ToastUtils.getInstance().toast("缓存区拿的："  + list.size());
+//                            onSucceed(list,mothead);  一般都是公用一个方法
+	}
+    }));
+ ```
 
 ###<font color=red size=6>String缓存处理</font>
 因为ResponseBody.string() 方法 机制问题。所以框架内。String缓存需要
-![这里写图片描述](http://img.blog.csdn.net/20170617164009324?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
+``` python
+@Override
+public void onSucceed(ResponseBody body, String s) {
+    //这里需要这样解析转换后，返回 给 onSucceed
+    try {
+	String result = body.string();  //取到json
+	ToastUtils.getInstance().toast("网络拿的："  + result);
+	/**
+	 * 切记 切记，因为  ResponseBody的特殊性，只能自己在回调里面存
+	 */
+	BufferDbUtil.getInstance().updateResulteBy(IConstantPool.REQUEST_LIST_URL + ":string",result);
+    } catch (IOException e) {
+	e.printStackTrace();
+    }
+}
 ```
 //需要自己手动存储
  BufferDbUtil.getInstance().updateResulteBy(IConstantPool.REQUEST_LIST_URL,result);
