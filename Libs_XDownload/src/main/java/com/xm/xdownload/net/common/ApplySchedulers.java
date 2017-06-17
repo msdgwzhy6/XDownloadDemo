@@ -1,7 +1,5 @@
 package com.xm.xdownload.net.common;
 
-import java.util.concurrent.TimeUnit;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -20,7 +18,7 @@ public class ApplySchedulers<T> implements ObservableTransformer<T,T> {
     @Override
     public ObservableSource<T> apply(Observable<T> upstream) {
         return upstream
-                .delay(5, TimeUnit.SECONDS)
+//                .delay(5, TimeUnit.SECONDS)     //请求延迟五秒，再开始
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread(),true)
