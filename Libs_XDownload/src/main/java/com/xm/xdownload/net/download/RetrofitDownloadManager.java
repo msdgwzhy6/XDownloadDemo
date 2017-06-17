@@ -1,7 +1,5 @@
 package com.xm.xdownload.net.download;
 
-import android.util.Log;
-
 import com.xm.xdownload.net.buffer.DownInfo;
 import com.xm.xdownload.net.buffer.DownInfoDbUtil;
 import com.xm.xdownload.net.buffer.DownState;
@@ -69,7 +67,7 @@ public class RetrofitDownloadManager implements NetProgressListener, DownResultL
     private void start(final DownInfo downInfo) {
         //队列已满，进入等待状态
         if(RetrofitClient.client().getCurrentDownloadCount() >= RetrofitClient.client().getMaxDownloadCount()){
-            Log.e("tag","进入等待");
+            RetrofitClient.log("队列已满，进入等待.");
             updateState(downInfo,DownState.WAIT);
             //加入等待队列
             mProgressSubscriberHashMap.put(downInfo,null);
