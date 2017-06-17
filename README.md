@@ -140,7 +140,6 @@ RetrofitClient.getService(HttpService.class)
 	    TypeToken type = new TypeToken<List<BriefListBean>>() {};
 	    List<BriefListBean> list = new Gson().fromJson(result, type.getType());
 	    ToastUtils.getInstance().toast("缓存区拿的："  + list.size());
-//                            onSucceed(list,mothead);  一般都是公用一个方法
 	}
     }));
  ```
@@ -168,15 +167,15 @@ public void onSucceed(ResponseBody body, String s) {
 ```
 
 ## 下载功能
-``` python
+```python
 //下载管理 - 记得 ondestory
 private RetrofitDownloadManager mRetrofitDownloadManager;
 //使用 RetrofitDownloadManager 创建下载对象,内部有断点功能
 mDownInfo = mRetrofitDownloadManager.createDownInfo("http://xxx.apk");
 //点击按钮，开始更新
 mRetrofitDownloadManager.down(mDownInfo);
-
 ```
+
 <font color=red size=5>就这么简单，要记得释放资源,当然你不做也可以</font>
 ``` python
 @Override
