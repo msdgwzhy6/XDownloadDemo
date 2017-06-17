@@ -31,7 +31,7 @@ ps : 当然当然，都封装好了，你也可以无视
 # 如何使用
 
 在当前工程中引入
-compile 'com.github.2745329043:XDownloadLibrary:1.0.5'
+compile 'com.github.2745329043:XDownloadLibrary:1.0.6'
 
 最好直接参考demo
 https://github.com/2745329043/XDownloadDemo
@@ -49,7 +49,8 @@ RetrofitClient.init(this)
     .setConnectionTimeout(6)                   //普通请求连接超时
     .setReadTimeout(6)                         //普通请求读取超时
     .setDownConnectionTime(6)                  //下载连接超时 6秒
-    .setNetBufferTime(60)                      //有网络的情况下缓存 60    .setNoNetBufferTime(24 * 60 * 60 * 7)      //无网络的时候，缓存时间
+    .setNetBufferTime(60)                      //有网络的情况下缓存 60    
+    .setNoNetBufferTime(24 * 60 * 60 * 7)      //无网络的时候，缓存时间
     /** 设置完，记得Buid */
     .build();
 ```
@@ -70,11 +71,11 @@ public interface HttpService {
             @Query("type") int type
     );
 
-    /* 普通请求 Get -> 获取 String 版本*/
+    /* 普通请求 Get - 获取 String 版本*/
     @GET(IConstantPool.REQUEST_LIST_URL)
     Observable<ResponseBody> requestList();
 
-    /* 普通请求 Get -> 获取 GSON版本 版本 -> 这奇葩结构   是List<XXX> 的这种*/
+    /* 普通请求 Get - 获取 GSON版本 版本 - 这奇葩结构   是List<XXX> 的这种*/
     @GET(IConstantPool.REQUEST_LIST_URL)
     Observable<List<BriefListBean>> requestList_GSON();
 }
@@ -109,35 +110,65 @@ RetrofitClient.getService(HttpService.class)
  }));
 ```
 ###网络请求过程中，是否显示Dialog
-参数     | 说明
--------- | ---
 NetDialogConfig.UN_LOADING| 不显示
 NetDialogConfig.NORMAL_LOADING| 显示,点击Dialog外,销毁并关闭队列
 NetDialogConfig.FORBID_LOADING| 显示,不可取消
-#
 
 ###网络请求过程中，是否缓存数据
-
-参数     | 说明
--------- | ---
 NetBufferConfig.NORMAL_BUFFER| 缓存(ps:以初始化app)
 NetBufferConfig.UN_BUFFER| 不缓存
+
 ###缓存使用案例
-![Demo中截图](http://img.blog.csdn.net/20170615173955341?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 
 ###自定义缓存时间使用案例
-![这里写图片描述](http://img.blog.csdn.net/20170615174207471?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+``` python
+RetrofitClient.getService(HttpService.class)
+    .requestList_GSON()
+    .compose(new ApplySchedulers<List<BriefListBean>>())
+    //多了一个  请求地址的标识 IConstantPool.REQUEST_LIST_URL。因为数据是根据 接口来存，确保唯一性
+    .subscribe(new NetProgressSubscriber<>(RequestFragment.this, IConstantPool.REQUEST_LIST_URL, NetDialogConfig.NORMAL_LOADING, NetBufferConfig.NORMAL_BUFFER, new SimpleNetResponseListener<List<BriefListBean>>() {
+	@Override
+	public void onSucceed(List<BriefListBean> briefListBeen, String s) {
+	    ToastUtils.getInstance().toast("拿到好多数据："  + briefListBeen.size());
+	}
+
+	//这个是从本地取的
+	@Override
+	public void onCookieSucceed(String result, String mothead) {
+	    //这里需要这样解析转换后，返回 给 onSucceed
+	    TypeToken type = new TypeToken<List<BriefListBean>>() {};
+	    List<BriefListBean> list = new Gson().fromJson(result, type.getType());
+	    ToastUtils.getInstance().toast("缓存区拿的："  + list.size());
+	}
+    }));
+ ```
 
 ###<font color=red size=6>String缓存处理</font>
 因为ResponseBody.string() 方法 机制问题。所以框架内。String缓存需要
-![这里写图片描述](http://img.blog.csdn.net/20170617164009324?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA4ODkzNzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
+``` python
+@Override
+public void onSucceed(ResponseBody body, String s) {
+    //这里需要这样解析转换后，返回 给 onSucceed
+    try {
+	String result = body.string();  //取到json
+	ToastUtils.getInstance().toast("网络拿的："  + result);
+	/**
+	 * 切记 切记，因为  ResponseBody的特殊性，只能自己在回调里面存
+	 */
+	BufferDbUtil.getInstance().updateResulteBy(IConstantPool.REQUEST_LIST_URL + ":string",result);
+    } catch (IOException e) {
+	e.printStackTrace();
+    }
+}
 ```
+``` python
 //需要自己手动存储
  BufferDbUtil.getInstance().updateResulteBy(IConstantPool.REQUEST_LIST_URL,result);
 ```
 
 ## 下载功能
+
 ``` python
 //下载管理 - 记得 ondestory
 private RetrofitDownloadManager mRetrofitDownloadManager;
@@ -145,8 +176,8 @@ private RetrofitDownloadManager mRetrofitDownloadManager;
 mDownInfo = mRetrofitDownloadManager.createDownInfo("http://xxx.apk");
 //点击按钮，开始更新
 mRetrofitDownloadManager.down(mDownInfo);
-
 ```
+
 <font color=red size=5>就这么简单，要记得释放资源,当然你不做也可以</font>
 ``` python
 @Override
