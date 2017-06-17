@@ -162,6 +162,7 @@ public void onSucceed(ResponseBody body, String s) {
     }
 }
 ```
+``` python
 //需要自己手动存储
  BufferDbUtil.getInstance().updateResulteBy(IConstantPool.REQUEST_LIST_URL,result);
 ```
