@@ -167,7 +167,8 @@ public void onSucceed(ResponseBody body, String s) {
 ```
 
 ## 下载功能
-```python
+
+``` python
 //下载管理 - 记得 ondestory
 private RetrofitDownloadManager mRetrofitDownloadManager;
 //使用 RetrofitDownloadManager 创建下载对象,内部有断点功能
