@@ -49,7 +49,8 @@ RetrofitClient.init(this)
     .setConnectionTimeout(6)                   //普通请求连接超时
     .setReadTimeout(6)                         //普通请求读取超时
     .setDownConnectionTime(6)                  //下载连接超时 6秒
-    .setNetBufferTime(60)                      //有网络的情况下缓存 60    .setNoNetBufferTime(24 * 60 * 60 * 7)      //无网络的时候，缓存时间
+    .setNetBufferTime(60)                      //有网络的情况下缓存 60    
+    .setNoNetBufferTime(24 * 60 * 60 * 7)      //无网络的时候，缓存时间
     /** 设置完，记得Buid */
     .build();
 ```
