@@ -46,6 +46,7 @@ public class UpdateDialog extends Dialog{
         int percentWidthSize = AutoUtils.getPercentWidthSize(250);
         //然后 新建的 WaveDrawable 显示为多大，这个是怕外包公司就一套图的情况，图片在一些机型上，变形，不好看
         mWaveDrawable = new WaveDrawable(getContext(), imgRes,percentWidthSize,percentWidthSize);
+        //或者  mWaveDrawable = new WaveDrawable(getContext(), imgRes); //建立在。你有多套图的时候，不用限制图片大小
         mWaveDrawable.setLevel(1000);
         ivLogo.setImageDrawable(mWaveDrawable);
         //初始化更新内容
